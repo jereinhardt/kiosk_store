@@ -1,0 +1,22 @@
+<% content_for :header_options do %>
+	<%= link_to 'New Category', new_product_category_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<table class="table product-category-table">
+	<tr>
+		<th class="product-category-name">Name</th>
+		<th class="product-category-description">Description</th>
+		<th class="product-category-size">Size</th>
+		<th class="product-category-actions"></th>
+	</tr>
+	<% @categories.each do |category| %>
+	<tr>
+		<td class="product-category-name"><%= link_to category.name, product_category_path(category.id) %></td>
+		<td class="product-category-description"><%= category.description %></td>
+		<td class="product-category-size"><%= category.products.size %></td>
+		<td class="product-category-actions"><%= link_to 'Update Category', edit_product_category_path(category) %> <br>
+		 	<%= link_to 'Delete Category', product_category_path(category), method: :delete, data: {confirm: 'Are you sure?'} %>
+		 </td>
+	</tr>
+	<% end %>
+</table>

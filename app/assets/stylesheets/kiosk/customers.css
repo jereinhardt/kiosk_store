@@ -1,0 +1,23 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+
+/**********************
+NEW AND EDIT FORM STYLING
+**********************/
+
+/* table styles */
+.customer-form {
+	width: 50%;
+	margin: 30px 25%;
+}
+
+/* data cell styles */
+.form-label-cell {width: 40%;}
+.form-field-cell {width: 60%;}
+.form-field { width: 100%;}
+
+/* submit button */
+.customer-form-submit-button { margin-left: 25%;å}

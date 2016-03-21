@@ -1,0 +1,11 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Users', admin_users_path, class: 'btn btn-default btn-primary' %>
+	<%= link_to 'Delete User', admin_user_path(@user), data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+<% end %>
+
+<h3 class="page-title">Update User</h3>
+
+<%= form_for @user do |t| %>
+	<%= render partial: 'form', locals: {t: t} %>
+	<%= submit_tag 'Update User', class: 'btn btn-default form-submit-button' %>
+<% end %>

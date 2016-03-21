@@ -1,0 +1,10 @@
+<% content_for :header_options do %>
+	<%= link_to "Back to Index", shipping_methods_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<h3 class="page-title">New Shipping Method</h3>
+
+<%= form_for @shipping_method do |t| %>
+	<%= render partial: 'form', locals: {t: t} %>
+	<%= submit_tag 'Create New Shipping Method', class: 'btn btn-default' %>
+<% end %>

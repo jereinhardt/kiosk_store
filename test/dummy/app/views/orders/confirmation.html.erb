@@ -1,0 +1,8 @@
+Subtotal: <%= number_to_currency current_order.subtotal %> <br>
+Tax: <%= number_to_currency current_order.tax_cost %> <br>
+Shipping: <%= number_to_currency current_order.shipping_cost %> <br>
+Total: <%= number_to_currency current_order.total %> <br>
+
+<%= notice if notice %>
+
+<%= link_to "Confirm Order", charge_path, class: 'btn btn-default' %>

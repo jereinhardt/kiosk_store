@@ -1,0 +1,18 @@
+<%= notice if notice %> <%= alert if alert %>
+
+<%= link_to 'Back to products', products_path  %>  
+
+<%if !current_order.order_items.empty? %>
+	<%= link_to "shopping cart", cart_path %>
+<% end %>
+
+<h2><%= @product.name %></h2>
+<%= @product.images.first.image.url(:medium) %>
+
+<%= number_to_currency @product.price %>
+
+<%= form_tag buy_path(@product) do %>
+	<%= label_tag 'Qunatity', :quantity %>
+	<%= text_field_tag :quantity, 1%>
+	<%= submit_tag 'Add to Cart' %>
+<% end %>

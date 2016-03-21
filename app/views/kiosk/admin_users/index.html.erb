@@ -1,0 +1,23 @@
+<% content_for :header_options do %>
+	<%= link_to 'Create New User', new_admin_user_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<h3 class="page-title">Store Administors</h3>
+
+<table class="table admin-user-table">
+	<tr>
+		<th class="user-name">Name</th>
+		<th class="user-email">Email</th>
+		<th class="user-actions">Actions</th>
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td class="user-name"><%= user.full_name %></td>
+			<td class="user-email"><%= user.email %></td>
+			<td class="user-actions">
+				<%= link_to 'Update User', edit_admin_user_path(user) %> <br>
+				<%= link_to 'Delete User', admin_user_path(user), method: :delete, date: {confirm: 'Are you sure?'} %>
+			</td>
+		</tr>
+	<% end %>
+</table>

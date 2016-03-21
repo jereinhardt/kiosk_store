@@ -1,0 +1,53 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+/*****************
+TABLE FORMAT FOR ORDERS INDEX PAGE
+*****************/
+
+table.orders-table-index tr th#order-number { width: 5%;}
+table.orders-table-index tr th#order-placed-at { width: 15%;}
+table.orders-table-index tr th#order-details { width: 60%}
+table.orders-table-index tr th#order-shipped { width: 20%}
+
+/* table data */
+
+table.orders-table-index tr td { padding: 5px; font-size: 0.95em;}
+table.orders-table-index tr td.order-number-data {text-align: center}
+
+/*****************
+TABLE FORMAT FOR ORDERS SHOW PAGE
+*****************/
+
+/* table layout */
+	/* billing and shipping info */
+div.billing-shipping-tables-container {margin: 0px; padding: 0px;}
+div.billing-shipping-tables-container table {float: left; width: 45%;}
+
+table.billing-info-table { margin-right: 5%;}
+table.shipping-info-table {margin-left: 5%;}
+div.clear-left { clear: left;}
+
+	/* order details */
+
+table.order-details-table {
+	width: 100%;
+	margin-top: 25px;
+}
+
+div.ending-data-tables {margin: 0px; padding: 0px;}
+div.ending-data-tables table {float: left;}
+table.misc-order-data {width: 45%; margin-right: 25%;}
+table.order-summary {width: 30%;}
+
+/* table data */
+div.billing-shipping-tables-container table th {padding: 3px 25px; font-size: 1.2em;}
+div.billing-shipping-tables-container table td, div.ending-data-tables table th, div.ending-data-tables table td {
+	padding: 3px 10px 3px 25px;
+}
+td.order-item-number {text-align: center;}
+
+tr:last-child { border-bottom: 1px solid #ddd;}
+

@@ -1,0 +1,212 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+	padding: 0;
+}
+
+/* colors */
+html, .main  {background-color: #EFEFEF;}
+
+header {  background-color: #0FA3B1; }
+aside.nav-container {  background: #4c4c4c; }
+div.nav-menu-header {  background: #007C74; }
+div.button-container a { background: #EFEFEF; }
+
+/*************************
+HEADER
+*************************/
+
+header#page-header {
+	position: fixed;
+	height: 80px; /* height of header */
+	padding: 0 0 0 200px; /* offset form navigation width */
+	width: 100%;
+	box-shadow: 3px 2px 15px rgba(114, 114, 114, 0.3);
+}
+
+header div.page-header-container {padding: 5px 35px;}
+
+header div.page-header-container h3 {float: left; }
+
+
+header div.button-container {margin-right: 0; margin-top: 22px;}
+header div.page-header-container a { 
+	width: 135px;
+	float: right;
+	padding: 2px;
+	border: none;
+	border-radius: 25px;
+
+}
+
+header div.page-header-container a:not(:first-child) { margin-right:20px;}
+
+div.clear-right { clear: right;}
+div.clear-left {clear: left;}
+div.clear {clear: both;}
+/*************************
+NAVIGATION
+*************************/
+
+aside.nav-container {
+	float: left;
+	position: fixed;
+	height: 100%;
+	width: 200px; /* width of navigation */
+	margin-top: 0;
+}
+
+.nav-menu-header {
+	height: 80px; /* height of header */
+}
+
+.nav-menu-header h3 {
+	margin: 0px;
+	text-align: center;
+	padding: 20px 0;
+	color: white;
+}
+
+ul.nav-menu {
+	list-style: none;
+	padding: 0;
+}
+
+ul.nav-menu li.nav-menu-item {
+
+	border-bottom: 1px solid #686868;
+	padding: 0;
+}
+
+ul.nav-menu li.nav-menu-item a {
+	display: block;
+	color: white;
+	font-size: 1.1em;
+	padding: 8px 5px 8px 17px;
+}
+
+ul.nav-menu li.nav-menu-item a:hover {
+	background: #2b2b2b;
+	color: #7f7f7f;
+}
+
+ul.nav-menu li.nav-menu-item a:hover {
+	text-decoration: none;
+}
+
+/*************************
+Main Layout
+*************************/
+
+.content {
+	padding-left: 200px;
+	padding-top: 80px; /* offset from header hieght */
+}
+
+.main {
+	padding: 35px;
+}
+
+/*************************
+Main Body Styles
+*************************/
+
+.page-title {text-align: center; margin: 0 0 35px 0;}
+
+.info-container {
+	border: 1px solid black;
+	padding:10px;
+	margin-bottom: 35px;
+}
+
+.info-header {
+	font-size: 1.4em;
+	margin-bottom: 0px;
+}
+.info-content {
+	font-size: 1.1em;
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+/*************************
+NOTIFICATION
+*************************/
+
+.notification-container { }
+.notification-container p {
+	padding: 7px 50px;
+	font-size: 1.21em;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+#notification-alert {background: red; color: white;} /* styling for alerts */
+#notification-notice {background: blue; color: black;} /* styling for notices */
+
+/*************************
+GENERAL TABLE RULES
+*************************/
+table {
+	margin: 0 auto;
+}
+table tr th {
+	background: #7bdff2; /* color 1 */ 
+	padding: 2px 5px; 
+}
+
+table tr:nth-child(2n + 1) {background: #EFF7F6;}
+
+/******************
+FORM STYLING
+******************/
+
+.form-section {
+	border: 1px solid black; 
+	padding: 15px;
+	margin-bottom: 35px;
+}
+.form-section-name {margin: 0 0 15px;}
+
+/* form layout */
+.form-row {width: 100%;}
+
+.form-col {float: left;}
+.form-row:not(:first-child) {margin-bottom: 15px}
+.form-row:last-child {margin-bottom: 0;}
+.form-col-half {width: 47.5%;}
+.form-col-half:last-child {margin-left: 2.5%; margin-right: 0px;}
+.form-col-half:first-child {margin-right: 2.5%; margin-left: 0px;}
+.form-col-third {width: 31%;}
+.form-col-third:first-child {margin-right: 1.6666666666666%;}
+.form-col-third:nth-child(2) {margin: 0 1.666666666666%;}
+.form-col-third:nth-child(3) {margin-left: 1.666666666666%;}
+.form-input {width: 100%;}
+/* other styling */
+.form-input { border: none;}
+.form-text-area { height: 80px;}
+
+/******************
+Misc Styling
+******************/
+
+/* BUTTONS */
+
+header div.button-container a:first-child { background: #E58B37; color: #EFEFEF;}
+header div.button-container a:first-child:hover {background: #C1752E; color: white;}
+
+
+
+

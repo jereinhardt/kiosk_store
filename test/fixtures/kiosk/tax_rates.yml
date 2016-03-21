@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+tax1: 
+  id: 1
+  rate: 9.3
+  applied_to_shipping_cost: false
+  applied_to_billing_address: true
+  applied_to_shipping_address: false
+#
+two: {}
+#  column: value

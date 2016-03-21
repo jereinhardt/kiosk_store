@@ -1,0 +1,27 @@
+<% content_for :header_options do %>
+	<%= link_to "New Product", new_product_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<table class="table product-index-table">
+	<tr>
+		<th class="product-name">Name</th>
+		<th class="product-description">Description</th>
+		<th class="product-price">Price</th>
+		<th class="product-stock">Stock</th>
+		<th class="product-actions"></th>
+	</tr>
+	<% @products.uncategorized.each do |product| %>
+		<%= render partial: 'products_table', locals: {product: product} %>
+	<% end %>
+
+
+	<% @categories.each do |category| %>
+		<tr>
+			<th class="category-title" colspan="5"><%= category.name %></th>
+		</tr>
+		<% category.products.each do |product| %>
+			<%= render partial: 'products_table', locals: {product: product} %>
+		<% end %>
+	<% end %>
+
+</table>

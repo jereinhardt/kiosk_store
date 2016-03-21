@@ -1,0 +1,14 @@
+<div class="login-form-container">
+	<div class="head-of-login">Welcome To Your Kiosk</div>
+	<% if notice %> <p class="notice"><%= notice %></p><% end %>
+	<% if alert %> <p class="alert"><%= alert %></p><% end %>
+	<%= form_tag sessions_path, class: 'login-form' do %>
+		<%= label_tag :email %>
+		<%= email_field_tag :email, params[:email], placeholder: 'Email', class: 'form-control' %>
+		<br>
+		<%= label_tag :password %>
+		<%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control' %>
+		<br>
+		<%= submit_tag 'Log In', class: 'btn btn-primary login-submit' %>
+	<% end %>
+</div>

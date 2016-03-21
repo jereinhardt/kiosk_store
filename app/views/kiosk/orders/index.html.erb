@@ -1,0 +1,20 @@
+<table class="table-bordered orders-table-index">
+	<tr>
+		<th id="order-number">Order Number</th>
+		<th id="order-placed-at">Placed At</th>
+		<th id="order-details">Order Details</th>
+		<th id="order-shipped">Shipped</th>
+	</tr>
+
+	<% @orders.each do |order| %>
+
+	<tr>
+		<td class="order-number-data"><%= link_to order.id, order_path(order) %></td>
+		<td class="order-placed-at-data"><%= order.placed_at.strftime("%m/%d/%Y") %></td>
+		<td class="order-details-data"><%= order.shipping_name %> - <%= order.order_items.size %> products ordered.</td>
+		<td class="order-shipped-data"><%= order.shipped_at.strftime("%m/%d/%Y") if order.shipped_at %></td>
+	</tr>
+
+	<% end %>
+
+</table>

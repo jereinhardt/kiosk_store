@@ -1,0 +1,33 @@
+<div class="form-section">
+	<h5 class="form-section-name">Tax Rate Info</h5>
+	<div class="form-row">
+		<div class="form-col form-col-fourth">
+			<%= t.label :rate, class: 'form-label' %>
+			<%= t.text_field :rate, class: 'form-input form-text-input' %>
+		</div>
+		<div class="clear-left"></div>
+	</div>
+	<div class="form-row">
+		<div class="form-col form-col-third">
+			<%= t.label :applied_to_shipping_address, 'Applied to Shipping Address?', class: 'form-label form-label-no-clear' %>
+			<%= t.check_box :applied_to_shipping_address, class: 'form-check-box-input' %>
+		</div>
+		<div class="form-col form-col-third">
+			<%= t.label :applied_to_billing_address, 'Applied to Billing Address?', class: 'form-label form-label-no-clear' %>
+			<%= t.check_box :applied_to_billing_address, class: 'form-check-box-input' %>
+		</div>
+		<div class="form-col form-col-third">
+			<%= t.label :applied_to_shipping_cost, 'Apply this rate to the cost of shipping?', class: 'form-label form-label-no-clear' %>
+			<%= t.check_box :applied_to_shipping_cost, class: 'form-check-box-input' %>
+		</div>
+		<div class="clear-left"></div>
+	</div>
+</div>
+
+<div class="form-section">
+	<h5 class="form-section-name">States This Tax Rate Applies To</h5>
+	<div class="tax-rate-states-container">
+		<%= t.collection_check_boxes :state_ids, @states, :id, :state_name %>
+	</div>
+
+</div>

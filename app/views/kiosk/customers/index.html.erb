@@ -1,0 +1,31 @@
+<% content_for :header_options do %>
+	<%= link_to 'Create a Customer', new_customer_path, class: 'btn btn-default btn-primary' %>
+	<%= link_to('Sort By Name', customers_path, class: 'btn btn-default') unless (params[:sort] == nil) %>
+	<%= link_to('Newest First', customers_path(sort: 'newest_first'), class: 'btn btn-default') unless (params[:sort] == 'newest_first') %>
+	<%= link_to('Oldest First', customers_path(sort: 'oldest_first'), class: 'btn btn-default') unless (params[:sort] == 'oldest_first') %>
+<% end %>
+
+<table class="table customer-info">
+	<tr>
+		<th class="customer-name">Name</th>
+		<th class="customer-email">Email</th>
+		<th class="customer-joined">Joined</th>
+		<th class="customer-actions"></th>
+	</tr>
+
+	<% @customers.each do |cust| %>
+
+	<tr>
+		<td class="customer-name"><%= cust.full_name %></td>
+		<td class="customer-email"><%= cust.email %></td>
+		<td class="customer-joined"><%= cust.created_at.strftime("%m/%d/%Y") %></td>
+		<td class="customer-actions">
+			<%= link_to 'Order History', customer_path(cust) %> <br>
+			<%= link_to 'Update Customer', edit_customer_path(cust) %> <br>
+			<%= link_to 'Delete Customer', customer_path(cust), method: :delete, data: {confirm: 'Are you sure?' }%> <br>
+		</td>
+	</tr>
+
+	<% end %>
+
+</table>

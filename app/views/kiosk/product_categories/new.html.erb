@@ -1,0 +1,8 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Categories', product_categories_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<%= form_for @category do |t| %>
+	<%= render partial: 'form', locals: {t: t} %>
+	<%= submit_tag 'Create New Category', 'btn btn-default' %>
+<% end %>

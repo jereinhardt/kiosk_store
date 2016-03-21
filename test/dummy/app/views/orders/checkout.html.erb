@@ -1,0 +1,66 @@
+<%if @order.errors.full_messages.any? %>
+<% @order.errors.full_messages.each do |message| %>
+<%= message %> <br>
+<% end %>
+<% end %>
+
+<%= form_for @order, url: checkout_path, method: :post do |t| %>
+<div class="container">
+	<div class="col col-md-6">
+		<h2>Billing Information</h2>
+		<%= t.label :billing_name, "Name" %>
+		<%= t.text_field :billing_name, class: 'form-control' %>
+
+		<%= t.label :billing_phone_number, 'Phone' %>
+		<%= t.text_field :billing_phone_number, class: 'form-control' %>
+
+		<%= t.label :billing_street_1, "Street 1" %>
+		<%= t.text_field :billing_street_1, class: 'form-control' %>
+
+		<%= t.label :billing_street_2, "Street 2" %>
+		<%= t.text_field :billing_street_2, class: 'form-control' %>
+
+		<%= t.label :billing_zip_code, "Zip Code" %>
+		<%= t.text_field :billing_zip_code, class: 'form-control' %>
+
+		<%= t.label :billing_city, "City" %>
+		<%= t.text_field :billing_city, class: 'form-control' %>
+
+		<%= t.label :billing_email, "email" %>
+		<%= t.text_field :billing_email, class: 'form-control' %>
+
+		<%= t.label :billing_state, "State" %>
+		<%= t.select :billing_state, Kiosk::State.sorted.collect {|s| [s.state_name, s.state_code]}, class: 'form-control' %>
+
+	</div>
+
+	<div class="col col-md-6">
+		<h2>Shipping Information</h2>
+		<%= t.label :shipping_name, "Name" %>
+		<%= t.text_field :shipping_name, class: 'form-control' %>
+
+		<%= t.label :shipping_phone_number, "Phone" %>
+		<%= t.text_field :shipping_phone_number, class: 'form-control' %>
+
+		<%= t.label :shipping_street_1, "Street 1" %>
+		<%= t.text_field :shipping_street_1, class: 'form-control' %>
+
+		<%= t.label :shipping_street_2, 'Street 2' %>
+		<%= t.text_field :shipping_street_2, class: 'form-control' %>
+
+		<%= t.label :shipping_zip_code, "Zip Code" %>
+		<%= t.text_field :shipping_zip_code, class: 'form-control' %>
+
+		<%= t.label :shipping_city, "City" %>
+		<%= t.text_field :shipping_city, class: 'form-control' %>
+
+		<%= t.label :shipping_email, "Email" %>
+		<%= t.text_field :shipping_email, class: 'form-control' %>
+
+		<%= t.label :shipping_state, "State" %>
+		<%= t.select :shipping_state, Kiosk::State.sorted.collect {|s| [s.state_name, s.state_code]}, class: 'form-control' %>
+	</div>
+	<div class="row col col-md-12"><%= submit_tag "Submit", class: 'btn btn-default' %></div>
+</div>
+
+<% end %>

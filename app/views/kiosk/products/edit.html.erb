@@ -1,0 +1,13 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Products', products_path, class: 'btn btn-default btn-primary' %>
+	<%= link_to 'Delete Product', product_path(@product), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+<% end %>
+
+<h3 class="page-title">Update Product</h3>
+
+<%= form_for @product, html: {multipart: true} do |t| %>
+
+	<%= render partial: 'form', locals: {t: t} %>
+
+<%= submit_tag 'Update Product', class: 'btn btn-default' %>
+<% end %>

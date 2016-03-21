@@ -1,0 +1,4 @@
+<%= form_for @order, url: shipping_method_path(current_order), method: :patch do |s| %>
+	<%= s.collection_radio_buttons :shipping_method_id, @shipping_methods, :id, :display_name %> <br>
+	<%= submit_tag 'Submit', class: 'btn btn-default' %>
+<% end %>

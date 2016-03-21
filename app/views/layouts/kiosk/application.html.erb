@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiosk</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag    "kiosk/application", media: "all" %>
+  <%= javascript_include_tag "kiosk/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header id="page-header">
+	<div class="page-header-container">
+		<h3 class="page-header-text"><%= controller_name.titleize %></h3>
+		<div class="button-container">
+			<%= yield :header_options %>
+			<div class="clear-right"></div>
+	</div>
+</header>
+
+<aside class="nav-container">
+
+	<div class="nav-menu-header">
+		<h3>Kiosk!!!</h3>
+	</div>
+
+	<ul class="nav-menu">
+		<li class="nav-menu-item"><%= link_to 'Admins', admin_users_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Customers', customers_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Orders', orders_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Products', products_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Product Categories', product_categories_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Shipping Options', shipping_methods_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Tax Rates', tax_rates_path %></li>
+		<li class="nav-menu-item"><%= link_to 'Logout', logout_path %></li>
+
+	</ul>
+	
+</aside>
+
+<div class="content">
+	<% if flash[:notice] || flash[:alert] %>
+	<div class="notification-container">
+		<p class="notification" <% if flash[:notice] %> id="notification-notice" <% end %> <% if flash[:alert] %> id="notification-alert" <% end %>><%= flash[:notice] || flash[:alert] %></p>
+	</div>
+	<% end %>
+
+	<div class="main">
+	<%= yield %>
+	</div>
+
+</div>
+
+</body>
+</html>

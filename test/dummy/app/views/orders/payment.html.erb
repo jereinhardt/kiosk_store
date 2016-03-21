@@ -1,0 +1,33 @@
+
+
+<%= stripe_form_helper %>
+
+<div class="container">
+	<%= form_tag confirmation_path, id: 'payment-form', method: :post do %>
+		<div class="row"><span class="payment-errors co col-md-12"></span></div>
+		<div class="row">
+			<div class="col col-md-12">
+				<%= label_tag nil, 'Carnd Number' %>
+				<%= text_field_tag nil, 'xxxx-xxxx-xxxx-xxxx', data: {stripe: 'number'}, size: '20', class: 'form-control col col-md-12' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-md-6">
+				<%= label_tag nil, 'CVC' %>
+				<%= text_field_tag nil, 'xxx', data: {stripe: 'cvc'}, size: '20', class: 'form-control' %>
+			</div>
+			<div class="col col-md-2">
+				<%= label_tag nil, "Exp. Month (MM)" %>
+				<%= text_field_tag nil, 'MM', data: {stripe: 'exp-month'}, size: '2', class: 'form-control' %>
+			</div>
+			<div class="col col-md-4">
+				<%= label_tag nil, 'Exp Year (YYYY)' %>
+				<%= text_field_tag nil, 'YYYY', data: {stripe: 'exp-year'}, size: '4', class: 'form-control' %>
+			</div>
+		</div>
+
+		<div class="row">
+			<%= submit_tag 'Submit Payment', class: 'btn btn-default' %>
+		</div>
+	<% end %>
+</div>

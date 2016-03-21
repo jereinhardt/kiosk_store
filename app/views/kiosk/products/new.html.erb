@@ -1,0 +1,12 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Products', products_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<h3 class="page-title">New Product</h3>
+
+<%= form_for @product, html: {multipart: true} do |t| %>
+
+	<%= render partial: 'form', locals: {t: t} %>
+
+<%= submit_tag 'Create New Product', class: 'btn btn-default' %>
+<% end %>

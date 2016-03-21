@@ -1,0 +1,10 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Tax Rates', tax_rates_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<h3 class="page-title">New Tax Rate</h3>
+
+<%= form_for @tax_rate do |t| %>
+	<%= render partial: 'form', locals: {t: t} %>
+	<%= submit_tag 'Create New Tax Rate', class: 'btn btn-default' %>
+<% end %>

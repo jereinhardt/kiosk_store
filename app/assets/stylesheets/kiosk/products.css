@@ -1,0 +1,16 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+
+
+/* for product form: show images; */
+.form-images-container {
+	background: grey;
+	margin-bottom: 10px;
+}
+.form-image {
+	float: left;
+	margin: 5px;
+}

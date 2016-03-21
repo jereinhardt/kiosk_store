@@ -1,0 +1,23 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Customers', customers_path, class: 'btn btn-deafult btn-primary' %>
+<% end %>
+
+<h3 class="customer-name"><%= @customer.full_name %></h3>
+
+<table class="table customer-order-history-table">
+	<tr>
+		<th class="order-date">Date</th>
+		<th class="order-details">Details</th>
+		<th class="order-total">Total</th>
+		<th class="order-shipping-date">Shipped On</th>
+	</tr>
+
+	<% @orders.placed.each do |order| %>
+		<tr>
+			<td class="order-date"><%= readable_date(order.placed_at) %></td>
+			<td class="order-details"><%= raw(render_order_details(order, 3)) %></td>
+			<td class="order-total"><%= order.total %></td>
+			<td class="order-shipping-date"><%= readable_date(order.shipped_at) %></td>
+		</tr>
+	<% end %>
+</table>

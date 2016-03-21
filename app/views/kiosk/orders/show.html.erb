@@ -1,0 +1,157 @@
+<% content_for :header_options do %>
+	<%= link_to('Mark as Shipped', shipped_order_path(@order), class: 'btn btn-default') unless @order.shipped? %>
+	<%= link_to 'Back to Orders', orders_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<div class="billing-shipping-tables-container">
+	<table class="table billing-info-table">
+
+		<tr>
+			<th class="billing-table-header">Billing Info</th>
+		</tr>
+
+		<tr>
+			<td class="billing-name-data"><%= @order.billing_name %></td>
+		</tr>
+
+		<tr>
+			<td class="billing_street_1"><%= @order.billing_street_1 %></td>
+		</tr>
+
+		<% if @order.billing_street_2 %>
+			<tr>
+				<td class="billing_street_2"><%= @order.billing_street_2 %></td>
+			</tr>
+		<% end %>
+
+		<% if @order.billing_street_3 %>
+			<tr>
+				<td class="billing_street_3"><%= @order.billing_street_3 %></td>
+			</tr>
+		<% end %>
+
+		<tr>
+			<td class="billing-city-state-zip"><%= @order.billing_city %>, <%= @order.billing_state %>, <%= @order.billing_zip_code %></td>
+		</tr>
+
+		<% if @order.billing_email %>
+			<tr>
+				<td class="billing_email"><%= @order.billing_email %></td>
+			</tr>
+		<% end %>
+
+		<% if @order.billing_phone_number %>
+			<tr>
+				<td class="billing_phone_number"><%= @order.billing_phone_number %></td>
+			</tr>
+		<% end %>
+
+	</table>
+
+	<table class="table shipping-info-table">
+
+		<tr>
+			<th class="shipping-table-header">Shipping Info</th>
+		</tr>
+
+		<tr>
+			<td class="shipping-name-data"><%= @order.shipping_name %></td>
+		</tr>
+
+		<tr>
+			<td class="shipping_street_1"><%= @order.shipping_street_1 %></td>
+		</tr>
+
+		<% if @order.shipping_street_2 %>
+			<tr>
+				<td class="shipping_street_2"><%= @order.shipping_street_2 %></td>
+			</tr>
+		<% end %>
+
+		<% if @order.shipping_street_3 %>
+			<tr>
+				<td class="shipping_street_3"><%= @order.shipping_street_3 %></td>
+			</tr>
+		<% end %>
+
+		<tr>
+			<td class="shipping-city-state-zip"><%= @order.shipping_city %>, <%= @order.shipping_state %>, <%= @order.shipping_zip_code %></td>
+		</tr>
+
+		<% if @order.shipping_email %>
+			<tr>
+				<td class="shipping_email"><%= @order.shipping_email %></td>
+			</tr>
+		<% end %>
+
+		<% if @order.shipping_phone_number %>
+			<tr>
+				<td class="shipping_phone_number"><%= @order.shipping_phone_number %></td>
+			</tr>
+		<% end %>
+
+	</table>
+	<div class="clear-left"></div>
+</div>
+
+<table class="table order-details-table">
+	<tr>
+		<th class="order-item-number"></th>
+		<th class="order-item-name">Item Name</th>
+		<th class="order-item-cost">Cost</th>
+		<th class="order-item-quantity">Quantity</th>
+		<th class="order-item-total">Total</th>
+	</tr>
+	<% item_number = 1 %>
+	<% @order.order_items.each do |item| %>
+
+		<tr>
+			<td class="order-item-number"><%= item_number %></td>
+			<td class="order-item-name"><%= item.name %></td>
+			<td class="order-item-cost"><%= item.cost %></td>
+			<td class="order-item-quantity"><%= item.quantity %></td>
+			<td class="order-item-total"><%= item.total %></td>
+		</tr>
+		<% item_number += 1 %>
+	<% end %>
+</table>
+
+<div class="ending-data-tables">
+
+	<table class="table misc-order-data">
+		<tr>
+			<td class="data-left">Shipping Method:</td>
+			<td class="data-right"><%= @order.shipping_method.name %></td>
+		</tr>
+		<tr>
+			<td class="data-left">Placed On:</td>
+			<td class="data-right"><%= @order.placed_at.strftime("%m/%d/%Y") %></td>
+		</tr>
+		<tr>
+			<td class="data-left">Shipped On:</td>
+			<td class="data-right"><%= @order.shipped_at.strftime("%m/%d/%Y") if @order.shipped_at %></td>
+		</tr>
+	</table>
+
+	<table class="order-summary">
+		<tr>
+			<th class="data-left">Subtotal:</th>
+			<th class="data-right"><%= number_to_currency @order.subtotal %></th>
+		</tr>
+		<tr>
+			<td class="data-left">Shipping: </td>
+			<td class="data-right"><%= number_to_currency @order.shipping_cost %></td>
+		</tr>
+		<tr>
+			<td class="data-left">Tax:</td>
+			<td class="data-right"><%= number_to_currency @order.tax_cost %></td>
+		</tr>
+		<tr>
+			<th class="data-left order-total">Total: </th>
+			<th class="data-right order-total"><%= number_to_currency @order.total %></th>
+		</tr>
+	</table>
+
+	<div class="clear-left"></div>
+
+</div>

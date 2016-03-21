@@ -1,0 +1,16 @@
+<%= link_to 'Continue Shopping', root_url %>
+<br>
+<h1>Shopping Cart</h1>
+<br>
+<% @order.order_items.each do |item| %>
+	<p><%= item.name %></p>
+	<p><%= item.cost %></p>
+	<p><%= item.quantity %></p>
+	<p><%= item.total %></p>
+<% end %>
+
+<p><strong>Total</strong>: <%= number_to_currency @order.subtotal %></p>
+
+<%= link_to "Checkout", checkout_path(@order) %>
+
+

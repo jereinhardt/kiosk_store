@@ -1,0 +1,31 @@
+<% content_for :header_options do %>
+	<%= link_to 'Back to Categories', product_categories_path, class: 'btn btn-default btn-primary' %>
+	<%= link_to 'Update Category', edit_product_category_path(@category), class: 'btn btn-default' %>
+<% end %>
+
+<h3 class="page-title">Category Information</h3>
+
+<div class="info-container">
+	<h4 class="info-header">Name</h4>
+	<p class="info-content"><%= @category.name %></p>
+
+	<h4 class="info-header">Description</h4>
+	<p class="info-content"><%= @category.description %></p>
+</div>
+
+<h3 class="page-title">Products</h3>
+
+<table class="table product-index-table">
+	<tr>
+		<th class="product-name">Name</th>
+		<th class="product-description">Description</th>
+		<th class="product-price">Price</th>
+		<th class="product-stock">Stock</th>
+		<th class="product-actions"></th>
+	</tr>
+
+	<% @products.each do |product| %>
+		<%= render partial: 'kiosk/products/products_table', locals: {product: product} %>
+	<% end %>
+
+</table>

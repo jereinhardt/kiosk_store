@@ -1,0 +1,49 @@
+body.login-body{
+	/*background-image: url('blue-tile-background.jpg');*/
+	background-image: url('blue-textured-background');
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+.login-form-container {
+	padding: 10px;
+	width:350px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -160px;
+	margin-left: -176px;
+	background: #fff;
+	box-shadow: 5px 1px 20px black;
+}
+
+.login-form label, .login-form input:not([type=submit]) {
+	text-align: center;
+	width: 100%;
+}
+
+.login-form input:not([type=submit]) {
+	background: #ddd;
+}
+
+.login-submit {
+	width: 100px;
+	margin: 0 115px;
+}
+
+.head-of-login {
+	background: #007C74;
+	margin: -10px -10px 5px -10px;
+	padding: 5px;
+	font-size: 1.25em;
+	text-align: center;
+	color: #fff;
+}
+
+.notice, .alert {padding: 0; margin: 0; font-size: 1.05em; font-weight: bold; text-align: center;}
+
+.notice {color: #7c7c7c;}
+.alert {color: #D63535;}

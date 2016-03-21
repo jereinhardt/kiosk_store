@@ -1,0 +1,22 @@
+<% content_for :header_options do %>
+	<%= link_to 'New Shipping Method', new_shipping_method_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<table class="table shipping-methods-table">
+	<tr>
+		<th class="shipping-method-name">Name</th>
+		<th class="shipping-method-cost">Cost</th>
+		<th class="shipping-method-actions"></th>
+	</tr>
+<% @shipping_methods.each do |method| %>
+	<tr>
+		<td class="shipping-method-name"><%= link_to method.name, edit_shipping_method_path(method) %></td>
+		<td class="shipping-method-cost"><%= number_to_currency method.cost %></td>
+		<td class="actions">
+			<%= link_to "Update", edit_shipping_method_path(method) %> <br>
+			<%= link_to "Delete", shipping_method_path(method), method: :delete, data: {confirm: "Are you sure?"} %>
+		</td>
+	</tr>
+<% end %>
+
+</table>

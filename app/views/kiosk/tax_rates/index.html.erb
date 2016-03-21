@@ -1,0 +1,31 @@
+<% content_for :header_options do %>
+	<%= link_to 'New Tax Rate', new_tax_rate_path, class: 'btn btn-default btn-primary' %>
+<% end %>
+
+<table class="table tax-rate-table">
+	<tr>
+		<th class="tax-rate-rate">Rate</th>
+		<th class="tax-rate-states">States</th>
+		<th class="tax-rate-shipping">On Shipping Address?</th>
+		<th class="tax-rate-billing">On Billing Address?</th>
+		<th class="tax-rate-shipping-cost">On Shipping Cost?</th>
+		<th class="tax-rate-actions"></th>
+	</tr>
+
+	<% @tax_rates.each do |rate| %>
+
+	<tr>
+		<td class="tax-rate-rate"><%= number_to_percentage rate.rate, :precision => 1 %></td>
+		<td class="tax-rate-states"><% rate.states.each do |state| %><%= state.state_name %> <br> <% end %></td>
+		<td class="tax-rate-shipping"><% if rate.applied_to_shipping_address %>Yes<% else %>No<% end %></td>
+		<td class="tax-rate-billing"><% if rate.applied_to_billing_address %>Yes<% else %>No<% end %></td>
+		<td class="tax-rate-shipping-cost"><% if rate.applied_to_shipping_cost %>Yes<% else %>No<% end %></td>
+		<td class="tax-rate-actions">
+			<%= link_to "Update", edit_tax_rate_path(rate) %> <br>
+			<%= link_to "Delete", tax_rate_path(rate), method: :delete, data: {confirm: "Are you sure?"} %>
+		</td>
+	</tr>
+
+	<% end %>
+
+</table>

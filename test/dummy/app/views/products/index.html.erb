@@ -1,0 +1,15 @@
+
+<h1>Widget Superstore!</h1>
+<p>	<%= link_to "shopping cart", cart_path %></p>
+<p>We sell widgets and widget accessories.</p>
+
+<% @products.each do |product| %>
+
+<h3><%= link_to product.name, product_path(product) %></h3>
+<%= image_tag product.images.first.image.url(:medium) %>
+
+<p><%= number_to_currency product.price %></p>
+<p><%= product.description %></p>
+
+<% end %>
+
