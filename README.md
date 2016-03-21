@@ -30,7 +30,7 @@ Rails.configuration.stripe = {
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
 ```
-This will allow Kiosk to user your Stripe account to process payments.  For the sake of testing, you can use the publishable key of `pk_test_6pRNASCoBOKtIshFeQd4XMUh` and the secret key of `sk_test_BQokikJOvBiI2HlWgH4olfQ2` in place of your actual keys.  These are test keys provided on teh Stripe website.  
+This will allow Kiosk to user your Stripe account to process payments.  For the sake of testing, you can use the publishable key of `pk_test_6pRNASCoBOKtIshFeQd4XMUh` and the secret key of `sk_test_BQokikJOvBiI2HlWgH4olfQ2` in place of your actual keys.  These are test keys provided on the Stripe website.  
 
 Lastly, we need to mount our engine.  In you `routes.rb` file, insert the following:
 
