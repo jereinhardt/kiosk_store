@@ -1,6 +1,4 @@
-= Kiosk
-
-This project rocks and uses MIT-LICENSE.# Kiosk
+# Kiosk
 
 Kiosk is an e-commerce engine that focuses on simplicity rather than an over-abundance of features.  It is intended to help entrepreneurs get their first products online by taking care of the back-end management, and allowing the user to build the front-end however they please.  Fully integrating Kiosk into your application may take a few steps, but all of them are simple.  Let's get started.  
 
@@ -32,7 +30,7 @@ Rails.configuration.stripe = {
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
 ```
-This will allow Kiosk to user your Stripe account to process payments.  For the sake of testing, you can use the publishable key of `pk_test_6pRNASCoBOKtIshFeQd4XMUh` and the secret key of `sk_test_BQokikJOvBiI2HlWgH4olfQ2` in place of your actual keys.  These are test keys provided on teh Stripe website.  
+This will allow Kiosk to user your Stripe account to process payments.  For the sake of testing, you can use the publishable key of `pk_test_6pRNASCoBOKtIshFeQd4XMUh` and the secret key of `sk_test_BQokikJOvBiI2HlWgH4olfQ2` in place of your actual keys.  These are test keys provided on the Stripe website.  
 
 Lastly, we need to mount our engine.  In you `routes.rb` file, insert the following:
 
@@ -389,7 +387,6 @@ This charges the card the customer provided for the order, confirms the order (w
 Now, when the customer confirms their order, they see our nice little message, and you will see an extra order in your inbox, as well as some extra money in your bank account.
 
 That covers everything you need to know about how Kiosk works.  Happy selling!
-
 
 
 
