@@ -56,7 +56,7 @@ module Kiosk
   	private
 
   	def product_params
-  		params.require(:product).permit(:name, :price, :stock, :description, :permalink)
+  		params.require(:product).permit(:name, :price, :stock, :short_description, :description, :permalink)
   	end
 
   	def product_image_params

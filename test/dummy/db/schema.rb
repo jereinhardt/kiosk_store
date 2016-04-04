@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320175408) do
+ActiveRecord::Schema.define(version: 20160404051832) do
 
   create_table "kiosk_addresses", force: :cascade do |t|
     t.string   "name"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160320175408) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "permalink"
+    t.string   "short_description"
   end
 
   add_index "kiosk_products", ["product_category_id"], name: "index_kiosk_products_on_product_category_id"
