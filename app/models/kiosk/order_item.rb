@@ -8,6 +8,10 @@ module Kiosk
 		(cost.to_f * quantity.to_f).to_f 
 	end
 
+	def images 
+		Kiosk::Product.find_by(name: name).images
+	end
+
 	#method to add item to basket based on product and quantity
 	def self.add_item(product, number=1)
 		new_item = create(name: product.name, cost: product.price, quantity: number.to_i)
