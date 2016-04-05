@@ -65,16 +65,20 @@ module Kiosk
 	    end
 	  end
 
-	  def tax_rate 
-	  	TaxRate.all.each do |r|
-	  		if r.states_by_code.include?(billing_state) && r.applied_to_billing_address
-	  			return r
-	  		elsif r.states_by_code.include?(shipping_state) && r.applied_to_shipping_address
-	  			return r
-	  		else
-	  			return nil
-	  		end
-	  	end
+	  def tax_rate
+	  	if !TaxRate.all.empty? 
+		  	TaxRate.all.each do |r|
+		  		if r.states_by_code.include?(billing_state) && r.applied_to_billing_address
+		  			return r
+		  		elsif r.states_by_code.include?(shipping_state) && r.applied_to_shipping_address
+		  			return r
+		  		else
+		  			return 0
+		  		end
+		  	end
+		else 
+			return 0 
+		end
 	  end
 
 	  # retuns to the decimal value of total cost of the order
