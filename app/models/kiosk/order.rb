@@ -56,9 +56,9 @@ module Kiosk
 	  # returns the decimal value of the tax cost
 	  # checks to see if tax rate applies toa =  the order, and if it applies to the subtotal or subtotal + shipping cost
 	  def tax_cost 
-	    if tax_rate && tax_rate.applied_to_shipping_cost
+	    if tax_rate > 0 && tax_rate.applied_to_shipping_cost
 	      return ((subtotal + shipping_cost) * (tax_rate.rate / 100)).to_f
-	    elsif tax_rate && !tax_rate.applied_to_shipping_cost
+	    elsif tax_rate > 0 && !tax_rate.applied_to_shipping_cost
 	      return ((tax_rate.rate / 100) * subtotal).to_f
 	    else
 	      return 0
