@@ -1,6 +1,5 @@
 <%= notice if notice %> <%= alert if alert %>
 
-<%= link_to 'Back to products', products_path  %>  
 
 <%if !current_order.order_items.empty? %>
 	<%= link_to "shopping cart", cart_path %>

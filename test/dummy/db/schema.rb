@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404051832) do
+ActiveRecord::Schema.define(version: 20160406052951) do
 
   create_table "kiosk_addresses", force: :cascade do |t|
     t.string   "name"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 20160404051832) do
     t.string   "shipping_street_3"
     t.string   "shipping_city"
     t.string   "status"
+    t.string   "billing_company"
+    t.string   "shipping_company"
   end
 
   add_index "kiosk_orders", ["customer_id"], name: "index_kiosk_orders_on_customer_id"

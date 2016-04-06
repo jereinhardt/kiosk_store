@@ -13,7 +13,9 @@ module Kiosk
   	end
 
 	def accept_stripe_token(token)
-		if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
+		#if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
+
+		if Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
 			self.paid!
 			save!
 			true
