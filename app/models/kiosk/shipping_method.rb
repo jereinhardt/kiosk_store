@@ -6,7 +6,8 @@ module Kiosk
 
   	# returns a string with the name and cost of the shipping method
   	def display_name 
-		"#{name}: #{cost}"
+  		display_cost = number_to_currency cost
+		return "#{name}: #{display_cost}"
 	end
 
   end
