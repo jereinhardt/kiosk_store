@@ -14,19 +14,19 @@
 			<td class="billing-name-data"><%= @order.billing_name %></td>
 		</tr>
 
+		<% if @order.billing_company %>
+			<tr>
+				<td class="billing-company"><%= @order.billing_company %></td>
+			</tr>
+		<% end %>
+
 		<tr>
 			<td class="billing_street_1"><%= @order.billing_street_1 %></td>
 		</tr>
 
-		<% if @order.billing_street_2 %>
+		<% if !@order.billing_street_2.empty? %>
 			<tr>
 				<td class="billing_street_2"><%= @order.billing_street_2 %></td>
-			</tr>
-		<% end %>
-
-		<% if @order.billing_street_3 %>
-			<tr>
-				<td class="billing_street_3"><%= @order.billing_street_3 %></td>
 			</tr>
 		<% end %>
 
@@ -58,19 +58,19 @@
 			<td class="shipping-name-data"><%= @order.shipping_name %></td>
 		</tr>
 
+		<% if @order.shipping_company%>
+			<tr>
+				<td class="shipping-company"><%= @order.shipping_company %></td>
+			</tr>
+		<% end %>
+
 		<tr>
 			<td class="shipping_street_1"><%= @order.shipping_street_1 %></td>
 		</tr>
 
-		<% if @order.shipping_street_2 %>
+		<% if !@order.shipping_street_2.empty? %>
 			<tr>
 				<td class="shipping_street_2"><%= @order.shipping_street_2 %></td>
-			</tr>
-		<% end %>
-
-		<% if @order.shipping_street_3 %>
-			<tr>
-				<td class="shipping_street_3"><%= @order.shipping_street_3 %></td>
 			</tr>
 		<% end %>
 

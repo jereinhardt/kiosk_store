@@ -16,7 +16,7 @@ module Kiosk
 	  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}\Z/i
 	  PHONE_REGEX = /\A[+?\d\ \-x\(\)]{7,}\z/
 
-	  with_options if: proc { |o| !o.building? } do |order|
+	  with_options if: proc { |o| o.building? } do |order|
 		  order.validates :billing_name, presence: true
 		  order.validates :billing_street_1, presence: true
 		  order.validates :billing_zip_code, presence: true, format: ZIP_CODE_REGEX
@@ -56,9 +56,9 @@ module Kiosk
 	  # returns the decimal value of the tax cost
 	  # checks to see if tax rate applies toa =  the order, and if it applies to the subtotal or subtotal + shipping cost
 	  def tax_cost 
-	    if (tax_rate > 0) && tax_rate.applied_to_shipping_cost
+	    if (tax_rate != 0) && tax_rate.applied_to_shipping_cost
 	      return ((subtotal + shipping_cost) * (tax_rate.rate / 100)).to_f
-	    elsif (tax_rate > 0) && !tax_rate.applied_to_shipping_cost
+	    elsif (tax_rate != 0) && !tax_rate.applied_to_shipping_cost
 	      return ((tax_rate.rate / 100) * subtotal).to_f
 	    else
 	      return 0
