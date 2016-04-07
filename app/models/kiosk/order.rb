@@ -22,14 +22,14 @@ module Kiosk
 		  order.validates :billing_zip_code, presence: true, format: ZIP_CODE_REGEX
 		  order.validates :billing_city, presence: true
 		  order.validates :billing_email, format: EMAIL_REGEX
-		  order.validates :billing_phone_number, format: PHONE_REGEX
+		  #order.validates :billing_phone_number, format: PHONE_REGEX
 
 		  order.validates :shipping_name, presence: true
 		  order.validates :shipping_street_1, presence: true
 		  order.validates :shipping_zip_code, presence: true, format: ZIP_CODE_REGEX
 		  order.validates :shipping_city, presence: true
 		  order.validates :shipping_email, format: EMAIL_REGEX
-		  order.validates :shipping_phone_number, format: PHONE_REGEX
+		  #order.validates :shipping_phone_number, format: PHONE_REGEX
 	  end
 
 	  scope :placed, -> { where("placed_at >= '2016-03-09 03:39:45'").order(placed_at: :desc) }
