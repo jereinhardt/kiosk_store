@@ -2,7 +2,7 @@ module Kiosk
   class Order < ActiveRecord::Base
 
   	def confirm_order_params(params = {})
-  		self.status = "confirming"
+  		self.confirming!
   		if update(params)
   			self.confirming!
   			true
