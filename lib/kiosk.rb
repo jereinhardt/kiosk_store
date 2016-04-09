@@ -1,4 +1,4 @@
-require 'Stripe'
+require 'stripe'
 require 'paperclip'
 require 'jquery-rails'
 require 'bcrypt'
