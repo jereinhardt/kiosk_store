@@ -2,7 +2,7 @@ require 'paperclip'
 require 'jquery-rails'
 require 'bcrypt'
 require 'kiosk/state_importer'
-#require 'stripe'
+require 'stripe'
 
 module Kiosk
 
