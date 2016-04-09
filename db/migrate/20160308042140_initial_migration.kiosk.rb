@@ -9,6 +9,14 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    create_table :kiosk_customers do |t|
+        t.string :first_name
+        t.string :last_name
+        t.string :email
+
+        t.timestamps null: false
+    end
+
     create_table :kiosk_addresses do |t|
     	t.string :name
     	t.string :company
@@ -23,13 +31,22 @@ class InitialMigration < ActiveRecord::Migration
     	t.timestamps null: false
     end
 
-    create_table :kiosk_customers do |t|
-    	t.string :first_name
-    	t.string :last_name
-    	t.string :email
+    create_table :kiosk_shipping_methods do |t|
+        t.string :name
+        t.decimal :cost
 
-    	t.timestamps null: false
+        t.timestamps null: false
     end
+
+    create_table :kiosk_tax_rates do |t|
+        t.decimal :rate
+        t.boolean :applied_to_shipping_cost
+        t.boolean :applied_to_billing_address
+        t.boolean :applied_to_shipping_address
+        t.text :state_ids
+
+        t.timestamps null: false
+    end 
 
     create_table :kiosk_orders do |t|
     	t.string :billing_name
@@ -70,6 +87,13 @@ class InitialMigration < ActiveRecord::Migration
     	t.timestamps null: false
     end
 
+    create_table :kiosk_product_categories do |t|
+        t.string :name 
+        t.text :description
+
+        t.timestamps null: false
+    end
+
     create_table :kiosk_products do |t|
     	t.string :name
     	t.text :description
@@ -80,30 +104,6 @@ class InitialMigration < ActiveRecord::Migration
 
     	t.timestamps null: false
     end
-
-    create_table :kiosk_product_categories do |t|
-        t.string :name 
-        t.text :description
-
-        t.timestamps null: false
-    end
-
-    create_table :kiosk_shipping_methods do |t|
-    	t.string :name
-    	t.decimal :cost
-
-    	t.timestamps null: false
-    end
-
-    create_table :kiosk_tax_rates do |t|
-    	t.decimal :rate
-        t.boolean :applied_to_shipping_cost
-    	t.boolean :applied_to_billing_address
-    	t.boolean :applied_to_shipping_address
-    	t.text :state_ids
-
-    	t.timestamps null: false
-    end 
   end
 
   def down
