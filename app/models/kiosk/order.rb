@@ -19,16 +19,16 @@ module Kiosk
 	  with_options if: proc { |o| o.confirming? } do |order|
 		  order.validates :billing_name, presence: true
 		  order.validates :billing_street_1, presence: true
-		  order.validates :billing_zip_code, presence: true, format: ZIP_CODE_REGEX
+		  order.validates :billing_zip_code, presence: true#, format: ZIP_CODE_REGEX
 		  order.validates :billing_city, presence: true
-		  order.validates :billing_email, format: EMAIL_REGEX
+		  order.validates :billing_email#, format: EMAIL_REGEX
 		  #order.validates :billing_phone_number, format: PHONE_REGEX
 
 		  order.validates :shipping_name, presence: true
 		  order.validates :shipping_street_1, presence: true
-		  order.validates :shipping_zip_code, presence: true, format: ZIP_CODE_REGEX
+		  order.validates :shipping_zip_code, presence: true#, format: ZIP_CODE_REGEX
 		  order.validates :shipping_city, presence: true
-		  order.validates :shipping_email, format: EMAIL_REGEX
+		  order.validates :shipping_email#, format: EMAIL_REGEX
 		  #order.validates :shipping_phone_number, format: PHONE_REGEX
 	  end
 

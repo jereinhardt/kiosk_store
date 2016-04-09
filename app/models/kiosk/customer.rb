@@ -9,7 +9,7 @@ module Kiosk
 
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :email, presence: true, format: EMAIL_REGEX, uniqueness: true
+    validates :email, presence: true, uniqueness: true#, format: EMAIL_REGEX,
 
   	scope :newest_first, -> { order(created_at: :desc)}
   	scope :oldest_first, -> { order(created_at: :asc)}

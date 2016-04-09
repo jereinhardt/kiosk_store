@@ -6,7 +6,7 @@ module Kiosk
 
   	validates :name, presence: true
   	validates :street_1, presence: true
-  	validates :zip_code, presence: true, format: ZIP_CODE_REGEX
+  	validates :zip_code, presence: true #, format: ZIP_CODE_REGEX
   	validates :state, presence: true
   end
 end
