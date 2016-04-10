@@ -18,9 +18,9 @@ end
 
 #carete products and assign them to a category
 
-product1 = Kiosk::Product.create(name: 'Standard Widget', description: "Our most standard widget.  Great for most situations.", stock: 10, price: 15, permalink: 'widget-standard', product_category_id: category.id)
-product2 = Kiosk::Product.create(name: 'Widget Delux', description: "A more heavy duty widget for those sticky situations.", stock: 12, price: 35, permalink: 'widget-delux', product_category_id: category.id)
-product3 = Kiosk::Product.create(name: 'Widget Supreme', description: "The best widget on the market.  Nothing will ever top this.", stock: 6, price: 75, permalink: 'widget-supreme', product_category_id: category.id)
+product1 = Kiosk::Product.create(name: 'Standard Widget', description: "Our most standard widget.  Great for most situations.", stock: 10, price: 15, permalink: 'widget-standard', kiosk_product_category_id: category.id)
+product2 = Kiosk::Product.create(name: 'Widget Delux', description: "A more heavy duty widget for those sticky situations.", stock: 12, price: 35, permalink: 'widget-delux', kiosk_product_category_id: category.id)
+product3 = Kiosk::Product.create(name: 'Widget Supreme', description: "The best widget on the market.  Nothing will ever top this.", stock: 6, price: 75, permalink: 'widget-supreme', kiosk_product_category_id: category.id)
 
 #build images for each product
 Kiosk::Image.create(image: File.new(get_file_path('evolved.jpeg')), product_id: product1.id)
