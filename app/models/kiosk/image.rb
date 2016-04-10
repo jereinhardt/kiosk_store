@@ -5,9 +5,7 @@ module Kiosk
         medium: "300x300>", 
         thumb: "100x100>" 
       }, 
-      :path => ":attachment/:id/:style.:extension",
-      :url => ':s3_domain_url', 
-      default_url: "/images/:style/missing.png"
+      :path => ":attachment/:id/:style.:extension"
 
 
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
