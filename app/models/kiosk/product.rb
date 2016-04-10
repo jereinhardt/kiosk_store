@@ -9,6 +9,6 @@ module Kiosk
 
   	belongs_to :product_category
 
-  	scope :uncategorized, -> {where(product_category_id: nil)}
+  	scope :uncategorized, -> {where(kiosk_product_category_id: nil)}
   end
 end
