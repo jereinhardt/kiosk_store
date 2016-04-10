@@ -5,10 +5,11 @@ module Kiosk
         medium: "300x300>", 
         thumb: "100x100>" 
       }, 
-      :storage => :s3,
-      :s3_credentials => "#{Rails.root}/config/s3.yml",
       :path => ":attachment/:id/:style.:extension",
-      :url => ':s3_domain_url'
+      :url => ':s3_domain_url', 
+      default_url: "/images/:style/missing.png"
+
+
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   	belongs_to :product
