@@ -5,7 +5,8 @@ module Kiosk
         medium: "300x300>", 
         thumb: "100x100>" 
       }, 
-      :path => ":attachment/:id/:style.:extension"
+      :path => '/:class/:attachment/:id_partition/:style/:filename',
+      :url => ':s3_domain_url'
 
 
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
