@@ -82,7 +82,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.decimal :cost 
     	t.integer :quantity
 
-        t.references :kiosk_order, index: true, foreign_key: true
+        t.references :order, index: true, foreign_key: true
 
     	t.timestamps null: false
     end

@@ -4,7 +4,7 @@ module Kiosk
   	  require_dependency 'kiosk/order/status'
   	  require_dependency 'kiosk/order/actions'
 
-  	  has_many :order_items, class_name: "KioskOrderItem", dependent: :destroy
+  	  has_many :order_items, dependent: :destroy
   	  has_one :billing_address
   	  has_one :shipping_address
 
