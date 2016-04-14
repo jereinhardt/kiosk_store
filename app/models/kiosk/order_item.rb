@@ -15,7 +15,7 @@ module Kiosk
 	#method to add item to basket based on product and quantity
 	def self.add_item(product, number=1)
 		new_item = create(name: product.name, cost: product.price, quantity: number.to_i)
-		new_item
+		new_item.save
 	end
 
   end

@@ -32,6 +32,10 @@ module Kiosk
 		end
 	end
 
+	def add_item(product, number=1)
+		order_items.build(name: product.name, cost: product.price, quantity: number.to_i)
+	end
+
 
   end
 end
