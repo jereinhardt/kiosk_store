@@ -5,12 +5,12 @@ module Kiosk
   	  require_dependency 'kiosk/order/actions'
 
   	  has_many :order_items, class_name: "Kiosk::OrderItem", dependent: :destroy
-  	  has_one :billing_address
-  	  has_one :shipping_address
+  	  has_one :billing_address, class_name: "Kiosk::BillingAddress"
+  	  has_one :shipping_address, class_name: "Kiosk::ShippingAddress"
 
 	  # belongs_to :tax_rate
-	  belongs_to :shipping_method
-	  belongs_to :customer
+	  belongs_to :shipping_method, class_name: "Kiosk::ShippingMethod"
+	  belongs_to :customer, class_name: "Kiosk::Customer"
 
 	  ZIP_CODE_REGEX = /\A[0-9]{5}\z/
 	  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}\Z/i

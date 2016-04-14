@@ -1,9 +1,9 @@
 module Kiosk
   class Customer < ActiveRecord::Base
-  	has_many :addresses
-    has_many :orders
-  	has_one :billing_address
-  	has_one :shipping_address
+  	has_many :addresses, class_name: "Kiosk::Address"
+    has_many :orders, class_name: "Kiosk::Order"
+  	has_one :billing_address, class_name: "Kiosk::BillingAddress"
+  	has_one :shipping_address, class_name: "Kiosk::ShippingAddress"
 
     EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}\Z/i
 
