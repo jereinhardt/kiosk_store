@@ -16,7 +16,7 @@ module Kiosk
 		if !paid?
 			if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
 				self.paid!
-				save!
+				#save!
 				true
 			else
 				false
@@ -28,7 +28,7 @@ module Kiosk
 		if !confirmed?
 			if charge = Stripe::Charge.create(amount: total_in_cents, currency: 'usd', customer: id, description: 'Charge for order #{id}')
 				self.confirmed!
-				save! 
+				#save! 
 				true
 			else 
 				false
