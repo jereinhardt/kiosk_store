@@ -15,8 +15,8 @@ module Kiosk
   	end
 
   	def create
-      if params[:product][:kiosk_product_category_id] != ""
-        @product = ProductCategory.find(params[:product][:kiosk_product_category_id]).products.build(product_params)
+      if params[:product][:product_category_id] != ""
+        @product = ProductCategory.find(params[:product][:product_category_id]).products.build(product_params)
       else 
   		  @product = Product.create(product_params)
       end
