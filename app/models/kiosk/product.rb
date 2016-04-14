@@ -7,7 +7,7 @@ module Kiosk
   	validates :price, presence: true, numericality: true
   	validates :stock, numericality: true
 
-  	belongs_to :product_category, class_name: "Kiosk::ProductCategory"
+  	belongs_to :product_category, class_name: "Kiosk::ProductCategory", foreign_key: 'product_category_id'
 
   	scope :uncategorized, -> {where(kiosk_product_category_id: nil)}
   end

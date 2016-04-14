@@ -9,8 +9,8 @@ module Kiosk
   	  has_one :shipping_address, class_name: "Kiosk::ShippingAddress"
 
 	  # belongs_to :tax_rate
-	  belongs_to :shipping_method, class_name: "Kiosk::ShippingMethod"
-	  belongs_to :customer, class_name: "Kiosk::Customer"
+	  belongs_to :shipping_method, class_name: "Kiosk::ShippingMethod", foreign_key: 'shipping_method_id'
+	  belongs_to :customer, class_name: "Kiosk::Customer", foreign_key: 'customer_id'
 
 	  ZIP_CODE_REGEX = /\A[0-9]{5}\z/
 	  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}\Z/i

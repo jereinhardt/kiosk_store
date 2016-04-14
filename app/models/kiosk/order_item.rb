@@ -1,7 +1,7 @@
 module Kiosk
   class OrderItem < ActiveRecord::Base
 
-  	belongs_to :order, class_name: "Kiosk::Order"
+  	belongs_to :order, class_name: "Kiosk::Order", foreign_key: 'order_id'
 
   	# returns the float value of the total of the order item
 	def total
