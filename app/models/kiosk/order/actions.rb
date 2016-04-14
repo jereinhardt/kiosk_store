@@ -13,22 +13,26 @@ module Kiosk
   	end
 
 	def accept_stripe_token(token)
-		if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
-			self.paid!
-			save!
-			true
-		else
-			false
+		if !paid?
+			if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
+				self.paid!
+				save!
+				true
+			else
+				false
+			end
 		end
 	end
 
 	def charge_customer
-		if charge = Stripe::Charge.create(amount: total_in_cents, currency: 'usd', customer: id, description: 'Charge for order #{id}')
-			self.confirmed!
-			save! 
-			true
-		else 
-			false
+		if !confirmed?
+			if charge = Stripe::Charge.create(amount: total_in_cents, currency: 'usd', customer: id, description: 'Charge for order #{id}')
+				self.confirmed!
+				save! 
+				true
+			else 
+				false
+			end
 		end
 	end
 
