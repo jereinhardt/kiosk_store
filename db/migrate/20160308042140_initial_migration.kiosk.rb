@@ -26,7 +26,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.string :state
     	t.string :country
     	t.string :type
-        t.references :kiosk_customer, index: true, foreign_key: true
+        t.references :customer, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
@@ -70,9 +70,9 @@ class InitialMigration < ActiveRecord::Migration
     	t.datetime :placed_at
     	t.datetime :shipped_at
 
-        t.references :kiosk_customer, index: true, foreign_key: true
-        t.references :kiosk_shipping_method, index: true, foreign_key: true
-        t.references :kiosk_tax_rate, index: true, foreign_key: true
+        t.references :customer, index: true, foreign_key: true
+        t.references :shipping_method, index: true, foreign_key: true
+        t.references :tax_rate, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
@@ -100,7 +100,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.integer :stock
     	t.decimal :price
 
-        t.references :kiosk_product_category, index: true, foreign_key: true
+        t.references :product_category, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
