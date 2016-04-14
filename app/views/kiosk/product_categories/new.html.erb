@@ -4,5 +4,5 @@
 
 <%= form_for @category do |t| %>
 	<%= render partial: 'form', locals: {t: t} %>
-	<%= submit_tag 'Create New Category', 'btn btn-default' %>
+	<%= submit_tag 'Create New Category', class: 'btn btn-default' %>
 <% end %>
