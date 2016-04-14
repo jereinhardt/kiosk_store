@@ -26,7 +26,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.string :state
     	t.string :country
     	t.string :type
-        t.integer :customer_id, index: true, foreign_key: true
+        t.references :customer, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
@@ -70,9 +70,9 @@ class InitialMigration < ActiveRecord::Migration
     	t.datetime :placed_at
     	t.datetime :shipped_at
 
-        t.integer :customer_id, index: true, foreign_key: true
-        t.integer :shipping_method_id, index: true, foreign_key: true
-        t.integer :tax_rate_id, index: true, foreign_key: true
+        t.references :customer, index: true, foreign_key: true
+        t.references :shipping_method, index: true, foreign_key: true
+        t.references :tax_rate, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
@@ -82,7 +82,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.decimal :cost 
     	t.integer :quantity
 
-        t.integer :order_id, index: true, foreign_key: true
+        t.references :order, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
@@ -100,7 +100,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.integer :stock
     	t.decimal :price
 
-        t.integer :product_category_id, index: true, foreign_key: true
+        t.references :product_category, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
