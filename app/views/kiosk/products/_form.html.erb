@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-col form-col-third">
 			<%= t.label :kiosk_product_category_id, "Product Category", class: 'form-label' %> <br>
-			<%= t.select :kiosk_product_category_id, Kiosk::ProductCategory.all.collect {|s| [s.name, s.id] }, include_blank: true, class: 'form-select form-input' %>
+			<%= t.select :product_category_id, Kiosk::ProductCategory.all.collect {|s| [s.name, s.id] }, include_blank: true, class: 'form-select form-input' %>
 		</div>
 		<div class="clear-left"></div>
 	</div>
