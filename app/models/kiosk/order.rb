@@ -16,7 +16,7 @@ module Kiosk
 	  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}\Z/i
 	  PHONE_REGEX = /\A[+?\d\ \-x\(\)]{7,}\z/
 
-	  with_options if: proc { |o| o.confirming? } do |order|
+	  with_options if: proc { |o| o.building? } do |order|
 		  order.validates :billing_name, presence: true
 		  order.validates :billing_street_1, presence: true
 		  order.validates :billing_zip_code, presence: true#, format: ZIP_CODE_REGEX
