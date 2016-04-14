@@ -11,7 +11,7 @@ module Kiosk
 
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  	belongs_to :product, class_name: "Kiosk::Product"
+  	belongs_to :product
 
   	def thumbnail
   		image.url(:thumb)

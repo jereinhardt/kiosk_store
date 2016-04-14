@@ -100,7 +100,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.integer :stock
     	t.decimal :price
 
-        t.integer :kiosk_product_category_id, index: true, foreign_key: true
+        t.integer :product_category_id, index: true, foreign_key: true
 
     	t.timestamps null: false
     end

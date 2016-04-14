@@ -1,6 +1,6 @@
 module Kiosk
   class Address < ActiveRecord::Base
-  	belongs_to :customer, class_name: "Kiosk::Customer"
+  	belongs_to :customer
 
   	ZIP_CODE_REGEX = /^[0-9]{5}$/
 

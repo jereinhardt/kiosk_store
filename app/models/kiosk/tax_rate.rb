@@ -1,6 +1,6 @@
 module Kiosk
   class TaxRate < ActiveRecord::Base
-  	has_many :orders, class_name: "Kiosk::Order"
+  	has_many :orders
   	has_and_belongs_to_many :states
 
   	validates :rate, presence: true, numericality: true

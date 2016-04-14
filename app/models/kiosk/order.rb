@@ -4,13 +4,13 @@ module Kiosk
   	  require_dependency 'kiosk/order/status'
   	  require_dependency 'kiosk/order/actions'
 
-  	  has_many :order_items, class_name: "Kiosk::OrderItem", dependent: :destroy
-  	  has_one :billing_address, class_name: "Kiosk::BillingAddress"
-  	  has_one :shipping_address, class_name: "Kiosk::ShippingAddress"
+  	  has_many :order_items, dependent: :destroy
+  	  has_one :billing_address
+  	  has_one :shipping_address
 
 	  # belongs_to :tax_rate
-	  belongs_to :shipping_method, class_name: "Kiosk::ShippingMethod", foreign_key: 'shipping_method_id'
-	  belongs_to :customer, class_name: "Kiosk::Customer", foreign_key: 'customer_id'
+	  belongs_to :shipping_method
+	  belongs_to :customer
 
 	  ZIP_CODE_REGEX = /\A[0-9]{5}\z/
 	  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}\Z/i
