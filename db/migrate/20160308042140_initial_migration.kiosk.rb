@@ -26,7 +26,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.string :state
     	t.string :country
     	t.string :type
-        t.references :customer, index: true, foreign_key: true
+        #t.references :customer, index: true, foreign_key: true
 
     	t.timestamps null: false
     end
