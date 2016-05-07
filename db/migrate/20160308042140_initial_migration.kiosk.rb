@@ -70,7 +70,7 @@ class InitialMigration < ActiveRecord::Migration
     	t.datetime :placed_at
     	t.datetime :shipped_at
 
-        t.references :customer, index: true, foreign_key: true
+        # t.references :customer, index: true, foreign_key: true
         t.references :shipping_method, index: true, foreign_key: true
         t.references :tax_rate, index: true, foreign_key: true
 
