@@ -26,12 +26,13 @@ module Kiosk
 
 	def charge_customer
 		if !confirmed?
-			if charge = Stripe::Charge.create(amount: total_in_cents, currency: 'usd', customer: id, description: 'Charge for order #{id}')
+			begin 
+				charge = Stripe::Charge.create(amount: total_in_cents, currency: 'usd', customer: id, description: 'Charge for order #{id}')
 				self.confirmed!
 				#save! 
 				true
-			else 
-				false
+			rescue => e 
+				Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
 			end
 		end
 	end
