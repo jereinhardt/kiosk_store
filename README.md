@@ -94,7 +94,7 @@ Not the best looking storefront, but it does display each of our items.  Now we 
 <%= number_to_currency @product.price %>
 
 <%= form_tag buy_path(@product) do %>
-	<%= label_tag 'Qunatity', :quantity %>
+	<%= label_tag 'Quantity', :quantity %>
 	<%= text_field_tag :quantity, 1%>
 	<%= submit_tag 'Add to Cart' %>
 <% end %>
@@ -133,7 +133,7 @@ end
 ```
 This action allows customer to add items to their order.  Whenever they submit the form we created on the `show` page, it will be submitted to and handled by the `buy` action. 
 
-We should update our `routes.rb` file to accomodate this, and to create a `cart` route where customers can check on their current order.  Open the file and add the following: 
+We should update our `routes.rb` file to accommodate this, and to create a `cart` route where customers can check on their current order.  Open the file and add the following: 
 
 ```ruby 
 post 'product/:id', to: 'products#buy', as: 'buy'
@@ -177,7 +177,6 @@ Now that our customer has been able to show around for a while, they are ready t
 match 'checkout', to: 'orders#checkout', as: 'checkout', via: [:get, :post]
 match 'shipping_method', to: 'orders#shipping', as: 'shipping_method', via: [:get, :patch]
 match 'checkout/pay', to: 'orders#payment', as: 'payment', via: [:get, :post]
-match 'checkout/confirm', to: 'orders#confirmation', as: 'confirmation', via: [:get, :post]
 match 'checkout/charge', to: 'orders#charge', as: 'charge', via: [:get, :post]
 match 'checkout/thanks', to: 'orders#thanks', as: 'thanks', via: [:get]
 ```
@@ -306,7 +305,7 @@ Now the user can select their shipping method.
 
 ### Payment
 
-Since payments are handled by Stripe, the controller for this action is pretty simple.  In `orders_controller.rb` add:
+Now we need to set up the payment page so our customer can submit their payment information.  This will be the final form the customer is required to submit.  Since payments are handled by Stripe, the controller for this action is pretty simple.  In `orders_controller.rb` add:
 ```ruby 
 def payment
 end
@@ -314,10 +313,16 @@ end
 Create a view in `app/views/order/` called `payment.html.erb` and add:
 
 ```
+
+Subtotal: <%= number_to_currency current_order.subtotal %> <br>
+Tax: <%= number_to_currency current_order.tax_cost %> <br>
+Shipping: <%= number_to_currency current_order.shipping_cost %> <br>
+Total: <%= number_to_currency current_order.total %> <br>
+
 <%= stripe_form_helper %>
 
 <div class="container">
-	<%= form_tag confirmation_path, id: 'payment-form', method: :post do %>
+	<%= form_tag charge_path, id: 'payment-form', method: :post do %>
 		<div class="row"><span class="payment-errors co col-md-12"></span></div>
 		<div class="row">
 			<div class="col col-md-12">
@@ -346,41 +351,24 @@ Create a view in `app/views/order/` called `payment.html.erb` and add:
 	<% end %>
 </div>
 ```
-The `strip_form_helper` is a helper method that invokes the javascript Stripe uses to handle payments.  This form will be submitted to the action in the next step in the checkout process, the confirmation:
+We want to make sure we display all the subtotals at the top so the customer can double-check their order.  The `strip_form_helper` is a helper method that invokes the javascript Stripe uses to handle payments.  This form will be submitted to the charge action:
 
-### confirmation 
+### Charge and Thanks
 
-We want the customer to be able to look over the order summary and confirm they want to make a purchase.  In your `orders_controller.rb` file, create the following action: 
-
+Now we need to create the action the payment form submits to in order to charge the customer's credit card.  To do so, insert the following into your `orders_controller.rb` file:
 ```ruby 
-def confirmation
-	if request.post? && !current_order.paid?
-		current_order.accept_stripe_token(params[:stripeToken])
+def charge 
+	unless current_order.paid?
+		current_order.accept_payment(params[:stripeToken])
+		session[:order_id] = nil
+		redirect_to thanks_path
+	else 
+		render 'payment'
 	end
 end
 ```
-This creates the confirmation action, which takes the token generated from the payment form in the previous step, and creates a Stripe Customer for the order.  The customer has not been charged yet, but their payment information has been saved.  The `.paid?` method checks to make sure that the customer has already filled out their credit card information, and that it has been validated by stripe.  Now we need a view that summarizes the order.  In `app/views/orders/` create `confirmation.html.erb` and add the following:
-```
-Subtotal: <%= number_to_currency current_order.subtotal %> <br>
-Tax: <%= number_to_currency current_order.tax_cost %> <br>
-Shipping: <%= number_to_currency current_order.shipping_cost %> <br>
-Total: <%= number_to_currency current_order.total %> <br>
-
-<%= notice if notice %>
-
-<%= link_to "Confirm Order", charge_path, class: 'btn btn-default' %>
-```
-This shows the customer what their order looks like and creates a link at the bottom which, when clicked, will charge their card by directing them to the next step
-### Charge and Thanks
-Once our customer has confirmed their order, we want to charge their card.  Create the following action in your `orders_controller.rb` file:
-```ruby 
-def charge 
-	current_order.charge_customer
-	session[:order_id] = nil
-	redirect_to thanks_path
-end
-```
-This charges the card the customer provided for the order, confirms the order (which will now appear in the admin panel), clear the current order, and redirect to a thank you page.  To be nice, let's create that view in `app/views/orders` `thanks.html.erb`
+This first checks to make sure this order hasn't already been paid for.  
+Then, it charges the card the customer provided for the order using the stripe token generated by the payment form.  If the charge goes through successfully, it confirms the order (which will now appear in the admin panel), clears the current order, and redirects to a thank you page.  To be nice, let's create that view in `app/views/orders` `thanks.html.erb`
 ```
 <h1>Thank You!</h1>
 ```
