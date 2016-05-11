@@ -39,7 +39,7 @@ module Kiosk
 	end
 
 	def accept_payment(token)
-		if !paid 
+		if !paid?
 			begin
 				customer = Stripe::Customer.create(
 					:source => token,
