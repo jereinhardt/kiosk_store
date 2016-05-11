@@ -14,7 +14,7 @@ module Kiosk
 
 	def accept_stripe_token(token)
 		if !paid?
-			if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}", id: id)
+			if customer = Stripe::Customer.create(:source => token, :description => "customer for order number #{id}")
 				self.paid!
 				#save!
 				true
@@ -33,6 +33,32 @@ module Kiosk
 				true
 			rescue => e 
 				Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+				false
+			end
+		end
+	end
+
+	def accept_payment(token)
+		if !paid 
+			begin
+				customer = Stripe::Customer.create(
+					:source => token,
+					:description => "customer for order number #{id}"
+				)
+				self.paid!
+
+				charge = Stripe::Charge.create(
+					customer: customer.id,
+					amount: total_in_cents,
+					currency: 'usd',
+					description: 'Charge for order #{id}' 
+				)
+				self.confirmed!
+				true
+			rescue Stripe::CardError => e 
+				Rails.logger.error { "#{e.message} #{e.backtrace.join("\n")}" }
+				flash[:error] = e.message
+				false
 			end
 		end
 	end
